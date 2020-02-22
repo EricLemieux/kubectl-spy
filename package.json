@@ -1,0 +1,29 @@
+{
+  "name": "kubectl-spy",
+  "version": "1.0.0",
+  "description": "kubectl plugin for reading values from secrets",
+  "main": "index.js",
+  "bin": "kubectl-spy.js",
+  "scripts": {
+    "build": "pkg . --out-dir bin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricLemieux/kubectl-spy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EricLemieux/kubectl-spy/issues"
+  },
+  "homepage": "https://github.com/EricLemieux/kubectl-spy#readme",
+  "devDependencies": {
+    "pkg": "^4.4.3"
+  },
+  "pkg": {
+    "targets": [
+      "node12"
+    ]
+  }
+}
