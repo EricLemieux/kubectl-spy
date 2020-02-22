@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "kubectl plugin for reading values from secrets",
   "main": "index.js",
-  "bin": "kubectl-spy.js",
-  "scripts": {
-    "build": "pkg . --out-dir bin"
-  },
+  "bin": "src/kubectl-spy.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EricLemieux/kubectl-spy.git"
