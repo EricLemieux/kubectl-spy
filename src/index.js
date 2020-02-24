@@ -5,7 +5,7 @@ const kubernetes = require('./kubernetes');
 (async function main() {
     try {
         program
-            .version('0.1.0')
+            .version('1.0.0')
             .option('-n, --namespace <string>', 'namespace for the secrets')
             .parse(process.argv);
 

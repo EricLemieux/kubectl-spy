@@ -2,14 +2,14 @@
   "name": "kubectl-spy",
   "version": "1.0.0",
   "description": "kubectl plugin for reading values from secrets",
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EricLemieux/kubectl-spy.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Eric Lemieux",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/EricLemieux/kubectl-spy/issues"
