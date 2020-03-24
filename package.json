@@ -18,7 +18,7 @@
   "devDependencies": {
     "@kubernetes/client-node": "^0.11.1",
     "commander": "^4.1.1",
-    "pkg": "^4.4.3"
+    "pkg": "^4.4.4"
   },
   "pkg": {
     "targets": [
