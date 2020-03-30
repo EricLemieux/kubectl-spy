@@ -15,9 +15,9 @@ function authenticate() {
 /**
  * Get the secret object from the kubernetes cluster
  *
- * @param api
- * @param name
- * @param namespace
+ * @param {CoreV1Api} api
+ * @param {string} name
+ * @param {string} namespace
  * @returns {Promise<{response: http.IncomingMessage; body: V1Secret}>}
  */
 function getSecret(api, name, namespace) {
