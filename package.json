@@ -17,7 +17,7 @@
   "homepage": "https://github.com/EricLemieux/kubectl-spy#readme",
   "devDependencies": {
     "@kubernetes/client-node": "^0.13.0",
-    "commander": "^6.2.0",
+    "commander": "^6.2.1",
     "pkg": "^4.4.9"
   },
   "pkg": {
