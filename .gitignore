@@ -111,3 +111,8 @@ dist
 
 # Compiled executables
 bin
+
+
+# Added by cargo
+
+/target

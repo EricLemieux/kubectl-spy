@@ -1,23 +1,18 @@
-.PHONY: prepare
-prepare:
-	npm install
+APPLICATION := ./target/release/kubectl-spy
+INSTALL_DIR := /usr/local/bin
 
-.PHONY: test
-test:
-	npm test
+.PHONY: build
+build:
+	cargo build --release
 
 .PHONY: test-e2e
 test-e2e:
 	kubectl create namespace database
 	kubectl apply -f kubernetes/
-	./bin/kubectl-spy my-secret-name
-	./bin/kubectl-spy my-secret-name another-secret
-	./bin/kubectl-spy database-secret -n database
-
-.PHONY: build
-build:
-	./node_modules/.bin/pkg . --out-dir bin
+	$(APPLICATION) my-secret-name
+	$(APPLICATION) my-secret-name another-secret
+	$(APPLICATION) database-secret -n database
 
 .PHONY: install
 install:
-	cp ./bin/kubectl-spy /usr/local/bin/
+	cp $(APPLICATION) $(INSTALL_DIR)
