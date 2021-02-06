@@ -28,7 +28,7 @@ async fn main() {
         ).await;
 
         let mut values: HashMap<String, String> = HashMap::new();
-        for data in secret.clone().data.unwrap().iter() {
+        for data in secret.clone().data.unwrap_or(std::collections::BTreeMap::new()).iter() {
             values.insert(String::from(data.0), String::from(str::from_utf8(&data.1.0).unwrap()));
         }
 
