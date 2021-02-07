@@ -8,11 +8,7 @@ build:
 .PHONY: test-e2e
 test-e2e:
 	kubectl apply -f kubernetes/
-	$(APPLICATION) my-secret-name
-	$(APPLICATION) my-secret-name another-secret
-	$(APPLICATION) database-secret -n database
-	$(APPLICATION) database-secret --namespace database
-	$(APPLICATION) empty-secret
+	./scripts/end-to-end-test.sh
 
 .PHONY: install
 install:
