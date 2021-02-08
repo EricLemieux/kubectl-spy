@@ -13,7 +13,7 @@ which can be installed using [krew](https://github.com/kubernetes-sigs/krew).
 * linux or mac (BSD and windows might work, but I haven't tested it)
 * kubernetes cluster (I am using `kind` on linux, and `docker desktop` on mac)
 * kubectl setup and connected to your cluster
-* node and npm for building
+* rust for building
 
 ## Building
 
@@ -31,7 +31,7 @@ This will output the binary to the `bin` folder, so for development testing you 
 
 ## Usage
 
-In order to install the binary, you can use the install make target, or simply copy the binary to anywhere within your `$PATH`.
+In order to install the binary, you can use the `install` make target, or simply copy the binary to anywhere within your `$PATH`.
 
 ```shell script
 make install
@@ -41,7 +41,7 @@ make install
 cp ./bin/kubectl-spy /some/custom/path/folder
 ```
 
-Once it's within your `$PATH` kubectl will automatically find it as a plugin and you can use it with.
+Once it's within your `$PATH` kubectl will automatically find it as a plugin, and you can use it with.
 
 ```shell script
 kubectl spy my-secret-name
