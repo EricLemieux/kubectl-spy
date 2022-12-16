@@ -525,7 +525,7 @@ dependencies = [
  "k8s-openapi",
  "kube-client",
  "kube-core",
- "kube-derive",
+ "kube-derive 0.74.0",
  "kube-runtime",
 ]
 
@@ -596,6 +596,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "kube-derive"
+version = "0.77.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "93ef49d30d03c5de8041e2ab5dc421d671d6225ffd53975571d4a5b18d5e50fb"
+dependencies = [
+ "darling",
+ "proc-macro2",
+ "quote",
+ "serde_json",
+ "syn",
+]
+
+[[package]]
 name = "kube-runtime"
 version = "0.74.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -626,7 +639,7 @@ dependencies = [
  "base64",
  "k8s-openapi",
  "kube",
- "kube-derive",
+ "kube-derive 0.77.0",
  "kube-runtime",
  "serde",
  "serde_json",
