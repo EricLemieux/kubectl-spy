@@ -8,7 +8,7 @@ edition = "2018"
 
 [dependencies]
 structopt = "0.3.26"
-base64 = "0.13.0"
+base64 = "0.21.0"
 kube = {version= "~0.74.0", features=["derive", "runtime"]}
 kube-derive = "~0.74.0"
 kube-runtime = "~0.74.0"
