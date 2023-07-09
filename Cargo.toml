@@ -17,4 +17,4 @@ k8s-openapi = {version = "~0.15.0", features = ["v1_18"] }
 tokio = { version = "1", features = ["full"] }
 
 serde = "1.0.167"
-serde_json = "1.0.99"
+serde_json = "1.0.100"
