@@ -1,6 +1,3 @@
-APPLICATION := ./target/release/kubectl-spy
-INSTALL_DIR := /usr/local/bin
-
 .PHONY: build
 build:
 	cargo build --release
@@ -12,4 +9,4 @@ test-e2e:
 
 .PHONY: install
 install:
-	cp $(APPLICATION) $(INSTALL_DIR)
+	cargo install --path .
