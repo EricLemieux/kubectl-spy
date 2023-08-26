@@ -12,6 +12,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3.6.0
       - run: cargo fmt -- --check
+  clippy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.6.0
+      - run: |
+          cargo clippy --fix -- \
+            -W clippy::pedantic \
+            -W clippy::nursery \
+            -W clippy::unwrap_used \
+            -W clippy::expect_used
   end-to-end-test:
     runs-on: ubuntu-latest
     steps:

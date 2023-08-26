@@ -1,6 +1,8 @@
 use clap::Parser;
+use k8s_openapi::api::core::v1::Secret;
 use kube::Client;
 use std::collections::HashMap;
+use std::error::Error;
 use std::str;
 
 mod kubernetes;
@@ -14,35 +16,37 @@ struct Cli {
 }
 
 #[tokio::main]
-async fn main() {
+async fn main() -> Result<(), Box<dyn Error>> {
     let args = Cli::parse();
 
-    let client = Client::try_default().await.unwrap();
-
     let mut secrets: HashMap<String, HashMap<String, String>> = HashMap::new();
-    for name in args.secrets.iter() {
+    for secret_name in args.secrets {
         let secret = kubernetes::get_secret(
-            client.clone(),
-            String::from(name),
+            Client::try_default().await?,
+            secret_name.clone(),
             String::from(&args.namespace),
         )
         .await;
 
-        let mut values: HashMap<String, String> = HashMap::new();
-        for data in secret
-            .clone()
-            .data
-            .unwrap_or(std::collections::BTreeMap::new())
-            .iter()
-        {
-            values.insert(
-                String::from(data.0),
-                String::from(str::from_utf8(&data.1 .0).unwrap()),
-            );
-        }
+        let secret_key_value_pairs = get_secret_key_value_pairs(&secret);
 
-        secrets.insert(secret.clone().metadata.name.unwrap(), values);
+        secrets.insert(secret_name.clone(), secret_key_value_pairs);
     }
 
-    println!("{}", serde_json::to_string(&secrets).unwrap());
+    Ok(println!("{}", serde_json::to_string(&secrets)?))
+}
+
+fn get_secret_key_value_pairs(secret: &Secret) -> HashMap<String, String> {
+    secret
+        .clone()
+        .data
+        .unwrap_or_default()
+        .iter()
+        .map(|a| {
+            (
+                String::from(a.0),
+                String::from(str::from_utf8(&a.1 .0).unwrap_or_default()),
+            )
+        })
+        .collect()
 }
