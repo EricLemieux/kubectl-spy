@@ -1,20 +1,21 @@
+use clap::Parser;
 use kube::Client;
 use std::collections::HashMap;
 use std::str;
-use structopt::StructOpt;
 
 mod kubernetes;
 
-#[derive(StructOpt, Debug)]
+#[derive(Parser, Debug)]
 struct Cli {
     secrets: Vec<String>,
-    #[structopt(default_value = "default", short = "n", long = "namespace")]
+
+    #[arg(default_value = "default", short, long)]
     namespace: String,
 }
 
 #[tokio::main]
 async fn main() {
-    let args = Cli::from_args();
+    let args = Cli::parse();
 
     let client = Client::try_default().await.unwrap();
 
