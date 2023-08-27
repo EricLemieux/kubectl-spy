@@ -19,14 +19,12 @@ struct Cli {
 async fn main() -> Result<(), Box<dyn Error>> {
     let args = Cli::parse();
 
+    let client = Client::try_default().await?;
+    let namespace = String::from(&args.namespace);
+
     let mut secrets: HashMap<String, HashMap<String, String>> = HashMap::new();
     for secret_name in args.secrets {
-        let secret = kubernetes::get_secret(
-            Client::try_default().await?,
-            secret_name.clone(),
-            String::from(&args.namespace),
-        )
-        .await;
+        let secret = kubernetes::get_secret(&client, &secret_name, &namespace).await;
 
         let secret_key_value_pairs = get_secret_key_value_pairs(&secret);
 
