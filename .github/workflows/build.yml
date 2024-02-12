@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
       - run: make build
-      - uses: helm/kind-action@v1.8.0
+      - uses: helm/kind-action@v1.9.0
         with:
           wait: 120s
       - run: make test-e2e
